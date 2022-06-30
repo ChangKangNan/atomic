@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.atomic.mapper.salve.UserMapper">
+
+    <resultMap id="BaseResultMap" type="com.example.atomic.entity.User">
+        <result column="id" jdbcType="BIGINT" property="id"/>
+        <result column="username" jdbcType="VARCHAR" property="username"/>
+        <result column="password" jdbcType="VARCHAR" property="password"/>
+    </resultMap>
+
+    <insert id="insert" parameterType="com.example.atomic.entity.User">
+        INSERT INTO `user` (`username`, `password`)
+        VALUES (#{username, jdbcType=VARCHAR}, #{password, jdbcType=VARCHAR})
+    </insert>
+
+    <delete id="deleteById" parameterType="java.lang.Long">
+        DELETE FROM `user` WHERE id = #{id, jdbcType=BIGINT}
+    </delete>
+</mapper>
